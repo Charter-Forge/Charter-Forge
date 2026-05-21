@@ -2,14 +2,14 @@
 from charter_forge.types import AuditorUnavailable, AuditResult, Verdict
 
 
-def test_verdict_enum_values():
+def test_verdict_enum_values() -> None:
     assert Verdict.PASS.value == "PASS"
     assert Verdict.VIOLATION.value == "VIOLATION"
     assert Verdict.UNPARSEABLE.value == "UNPARSEABLE"
     assert Verdict.AUDITOR_UNAVAILABLE.value == "AUDITOR_UNAVAILABLE"
 
 
-def test_audit_result_passed_property():
+def test_audit_result_passed_property() -> None:
     r1 = AuditResult(verdict=Verdict.PASS, rules=[], reason="ok", raw="x")
     assert r1.passed is True
     r2 = AuditResult(verdict=Verdict.VIOLATION, rules=[2], reason="lie", raw="x")
