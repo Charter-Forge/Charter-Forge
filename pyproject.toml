@@ -1,0 +1,30 @@
+[project]
+name = "charter-forge"
+version = "0.1.0"
+description = "Three-layer nonce-anti-injection defense for LLM auditor patterns"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.5", "litellm>=1.40"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=4.1", "ruff>=0.4", "mypy>=1.10"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+strict = true
+python_version = "3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --cov=charter_forge --cov-report=term-missing"
